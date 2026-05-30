@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECG</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      background: var(--bg);
+    }
+
+    /* Decorative blobs */
+    .blob-light {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 38%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .blob-dark {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 28%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Main layout ─────────────────────────── */
+    .page-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 28px 60px;
+    }
+
+    /* ── Page heading ─────────────────────────── */
+    .page-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .page-header h1 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .page-header p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .ECG-content {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px ;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: 7fr 3fr;
+      gap: 20px;
+    }
+
+    /* ECG Area */
+    .ECG {
+        border: 1px solid #ccc;
+        min-height: 350px;
+        background: #fafafa;
+        white-space: pre-line;
+    }
+    #ecgCanvas {
+        width: 100%;
+        height: 350px;
+        display: block;
+    }
+
+    /* Vitals Area */
+    .vitals-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+    .vitals-title {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding-top:20px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        line-height: 50px;
+        border: 1px solid #ccc;
+        background: #fafafa;
+    }
+    .vital {
+        border: 1px solid #ccc;
+        padding: 15px 10px;
+        text-align: center;
+        background: #fafafa;
+    }
+
+    .vital-label {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .vital-value {
+        font-size: 1.6rem;
+    }
+    @media (max-width: 800px) {
+        .ECG-content {
+            grid-template-columns: 1fr;
+        }
+        .ECG {
+            width: 100%;
+        }
+        .vitals-title{
+            padding-top:unset;
+        }
+
+    }
+
+    /* Bottom Button Area */
+    .controls {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: space-between;
+    }
+
+    .controls button {
+        flex: 1;
+        min-width: 120px;
+        padding: 12px;
+        cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <svg class="blob-light" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M500 0 C400 60, 310 20, 240 90 C170 160, 90 140, 0 200 L0 400 L500 400 Z"
+          fill="#d6f0e0" opacity="0.6"/>
+  </svg>
+  <svg class="blob-dark" viewBox="0 0 360 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M360 380 L0 380 C0 300, 60 260, 120 230 C200 190, 280 240, 360 180 Z"
+          fill="url(#blobGrad)"/>
+    <defs>
+      <linearGradient id="blobGrad" x1="0" y1="180" x2="360" y2="380">
+        <stop offset="0%" stop-color="#3cb871" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#1a6b3c"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="21" fill="#f1f5f9"/>
+        <rect x="18" y="8"  width="6" height="26" rx="2" fill="#34a853"/>
+        <rect x="8"  y="18" width="26" height="6"  rx="2" fill="#ea4335"/>
+        <rect x="8"  y="18" width="13" height="6"  rx="2" fill="#4285f4"/>
+        <rect x="18" y="8"  width="6"  height="13" rx="2" fill="#fbbc05"/>
+      </svg>
+      <span class="brand-name">trackit</span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="new-patient.html">New Patient</a></li>
+      <li><a href="find-patient.html">Find Patient</a></li>
+      <li><a href="#">Patient connection</a></li>
+      <li><a href="#">Medication</a></li>
+      <li><a href="ECG monitor.html" class="active">ECG</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content -->
+  <div class="page-content">
+    <div class="page-header">
+          <div>
+            <h1>ECG Monitor</h1>
+            <p>Track the patient's ECG over time</p>
+          </div>
+    </div>
+    <div class="ECG-content">
+        <div id="el" class="ECG" >
+		<canvas id="ecgCanvas"></canvas>
+        </div>
+
+        <div class="vitals-container">
+            <div class="vitals-title">Vitals</div>
+            <div class="vital">
+                <div class="vital-label">Pulse (bpm)</div>
+                <div class="vital-value">--</div>
+            </div>
+
+            <div class="vital">
+                <div class="vital-label">DIA SYS</div>
+                <div class="vital-value">--/--</div>
+            </div>
+
+            <div class="vital">
+                <div class="vital-label">Temp (°C)</div>
+                <div class="vital-value">--</div>
+            </div>
+
+            <div class="vital">
+                <div class="vital-label">SPO2 (%)</div>
+                <div class="vital-value">--</div>
+            </div>
+
+        </div>
+    <div class="controls">
+      <button>Load</button>
+      <button>Save</button>
+      <button>Pause</button>
+      <button>Stop</button>
+      <button>UDP</button>
+      <button>Connect</button>
+  </div>
+
+    </div>
+    
+  </div>
+  <script src="JS/stream.js"></script>
+</body>
+</html>

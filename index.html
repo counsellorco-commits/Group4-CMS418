@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trackit – Wireless Emergency Telemedicine System</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      overflow: hidden;
+    }
+
+    /* Light pastel wave – top-right */
+    .wave-light {
+      position: fixed;
+      right: 0;
+      top: 60px;
+      width: 54%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Dark green wave – bottom */
+    .wave-dark {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 74px);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.9rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.25;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--green-dark);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 580px;
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Light wave top-right -->
+  <svg class="wave-light" viewBox="0 0 700 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M700 0 C600 80, 450 40, 350 130 C250 220, 150 180, 0 260 L0 560 L700 560 Z"
+          fill="#d6f0e0" opacity="0.7"/>
+  </svg>
+
+  <!-- Dark wave bottom -->
+  <svg class="wave-dark" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 280 C80 230, 200 320, 350 270 C480 225, 560 300, 700 240
+             C840 178, 950 280, 1100 220 C1200 178, 1250 200, 1280 190 
+             L1280 420 L0 420 Z"
+          fill="url(#waveGradDark)"/>
+    <defs>
+      <linearGradient id="waveGradDark" x1="0" y1="0" x2="1280" y2="0">
+        <stop offset="0%" stop-color="#3cb871" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#1a6b3c"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <!-- Trackit + icon -->
+      <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="21" cy="21" r="21" fill="#f1f5f9"/>
+        <!-- Google-colours plus sign -->
+        <rect x="18" y="8"  width="6" height="26" rx="2" fill="#34a853"/>
+        <rect x="8"  y="18" width="26" height="6"  rx="2" fill="#ea4335"/>
+        <rect x="8"  y="18" width="13" height="6"  rx="2" fill="#4285f4"/>
+        <rect x="18" y="8"  width="6"  height="13" rx="2" fill="#fbbc05"/>
+      </svg>
+      <span class="brand-name">trackit</span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="new-patient.html">New Patient</a></li>
+      <li><a href="find-patient.html">Find Patient</a></li>
+      <li><a href="#">Patient connection</a></li>
+      <li><a href="#">Medication</a></li>
+      <li><a href="ECG monitor.html">ECG</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <a href="#" class="btn btn-outline">Create Account</a>
+      <a href="login.html" class="btn btn-primary">Log In</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <main class="hero">
+    <h1>
+      <em>Wireless</em> <span>Emergency<br>Telemedicine System</span>
+    </h1>
+    <p>
+      Transforming emergency medical care by combining mobility, connectivity,
+      and digital health tools to deliver prompt and accurate healthcare services
+      anytime and anywhere.
+    </p>
+  </main>
+
+</body>
+</html>
