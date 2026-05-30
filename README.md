@@ -204,7 +204,7 @@ Version Control:
 1. Clone the repository.
 
 
-git clone <repository-url>
+git clone https://github.com/counsellorco-commits/Group4-CMS418
 
 
 2. Copy the project into the Tomcat `webapps` directory.
