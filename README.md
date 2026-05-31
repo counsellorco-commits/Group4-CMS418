@@ -113,7 +113,7 @@ ECGApp/
 ├── login.html
 ├── new-patient.html
 ├── find-patient.html
-└── ECG monitor.html
+└── ecg-monitor.html
 
 
 
