@@ -87,11 +87,8 @@ ECGApp/
 │
 ├── JS/
 │   ├── stream.js
-│   ├── Departmentvalidator.js
-│   ├── Gendervalidator.js
-│   ├── Maritalstatusvalidator.js
-│   ├── Name_Email_Phone validators/
-│   └── validate_ID/
+│   ├── finPatientValidator.js
+│   └── login.js
 │
 ├── Design/
 │   ├── Home.png
@@ -247,4 +244,4 @@ http://localhost:8080/ECGApp/new-patient.html
 ECG Monitor:
 
 
-http://localhost:8080/ECGApp/ECG%20monitor.html
+http://localhost:8080/ECGApp/ecg-monitor.html

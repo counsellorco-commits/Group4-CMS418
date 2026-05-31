@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/stream")
 public class StreamServlet extends HttpServlet {
 
-    private String FILE_PATH = getServletContext().getRealPath("/ecg_sample.txt");
     private static final int SAMPLING_RATE = 1000;
     private static final int CHUNK_MS = 200;
     private static final int SAMPLES_PER_CHUNK =(SAMPLING_RATE * CHUNK_MS) / 1000; // 200
@@ -21,6 +20,7 @@ public class StreamServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req,HttpServletResponse resp)
             throws IOException {
+	String FILE_PATH = getServletContext().getRealPath("/ecg_sample.txt");
         resp.setContentType("text/event-stream");
         resp.setCharacterEncoding("UTF-8");
         resp.setHeader("Cache-Control", "no-cache");
