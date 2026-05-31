@@ -87,7 +87,8 @@ ECGApp/
 │
 ├── JS/
 │   ├── stream.js
-│   ├── finPatientValidator.js
+│   ├── findPatientValidator.js
+│   ├── newPatientValidator.js
 │   └── login.js
 │
 ├── Design/
