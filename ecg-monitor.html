@@ -162,7 +162,7 @@
 
   <!-- Navbar -->
   <nav class="navbar">
-    <a href="index.html" class="navbar-brand">
+    <a href="/ECGApp/" class="navbar-brand">
       <svg class="logo-icon" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="21" cy="21" r="21" fill="#f1f5f9"/>
         <rect x="18" y="8"  width="6" height="26" rx="2" fill="#34a853"/>
@@ -173,11 +173,11 @@
       <span class="brand-name">trackit</span>
     </a>
     <ul class="navbar-nav">
-      <li><a href="new-patient.html">New Patient</a></li>
-      <li><a href="find-patient.html">Find Patient</a></li>
+      <li><a href="/ECGApp/newpatient">New Patient</a></li>
+      <li><a href="/ECGApp/findpatient">Find Patient</a></li>
       <li><a href="#">Patient connection</a></li>
       <li><a href="#">Medication</a></li>
-      <li><a href="ecg-monitor.html" class="active">ECG</a></li>
+      <li><a href="/ECGApp/monitor" class="active">ECG</a></li>
     </ul>
   </nav>
 
@@ -198,22 +198,22 @@
             <div class="vitals-title">Vitals</div>
             <div class="vital">
                 <div class="vital-label">Pulse (bpm)</div>
-                <div class="vital-value">--</div>
+                <div class="vital-value" id="pulseValue">--</div>
             </div>
 
             <div class="vital">
                 <div class="vital-label">DIA SYS</div>
-                <div class="vital-value">--/--</div>
+                <div class="vital-value" id="bpValue">--/--</div>
             </div>
 
             <div class="vital">
                 <div class="vital-label">Temp (°C)</div>
-                <div class="vital-value">--</div>
+                <div class="vital-value" id="tempValue">--</div>
             </div>
 
             <div class="vital">
                 <div class="vital-label">SPO2 (%)</div>
-                <div class="vital-value">--</div>
+                <div class="vital-value" id="spo2Value">--</div>
             </div>
 
         </div>

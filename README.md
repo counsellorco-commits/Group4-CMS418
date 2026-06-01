@@ -87,9 +87,11 @@ ECGApp/
 │
 ├── JS/
 │   ├── stream.js
-│   ├── findPatientValidator.js
-│   ├── newPatientValidator.js
-│   └── login.js
+│   ├── Departmentvalidator.js
+│   ├── Gendervalidator.js
+│   ├── Maritalstatusvalidator.js
+│   ├── Name_Email_Phone validators/
+│   └── validate_ID/
 │
 ├── Design/
 │   ├── Home.png
@@ -113,7 +115,7 @@ ECGApp/
 ├── login.html
 ├── new-patient.html
 ├── find-patient.html
-└── ecg-monitor.html
+└── ECG monitor.html
 
 
 
@@ -202,7 +204,7 @@ Version Control:
 1. Clone the repository.
 
 
-git clone https://github.com/counsellorco-commits/Group4-CMS418
+git clone <repository-url>
 
 
 2. Copy the project into the Tomcat `webapps` directory.
@@ -245,4 +247,4 @@ http://localhost:8080/ECGApp/new-patient.html
 ECG Monitor:
 
 
-http://localhost:8080/ECGApp/ecg-monitor.html
+http://localhost:8080/ECGApp/ECG%20monitor.html

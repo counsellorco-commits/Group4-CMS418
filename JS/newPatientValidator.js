@@ -1,3 +1,4 @@
+
 (function () {
   "use strict";
 
@@ -206,7 +207,7 @@
           firstError.focus();
         }
       } else {
-        // All valid – put your form-submission logic here
+        // form-submission logic here
         console.log("Form is valid – ready to submit.");
         // Example: document.querySelector('form').submit();
       }
