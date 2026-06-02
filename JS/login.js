@@ -24,19 +24,25 @@ form.addEventListener("submit", function(event) {
         return;
     }
 
-    // Check username length
-    if (username.length < 3) {
-        alert("Username must be at least 3 characters");
-        event.preventDefault();
-        return;
-    }
+    // Username: letters, numbers, and underscores only
+let usernameRegex = /^[a-zA-Z0-9_]+$/;
 
-    // Check password length
-    if (password.length < 6) {
-        alert("Password must be at least 6 characters");
-        event.preventDefault();
-        return;
-    }
+if (!usernameRegex.test(username)) {
+    alert("Username can only contain letters, numbers, and underscores (_).");
+    event.preventDefault();
+    return;
+}
+
+// Password: at least 8 chars, one uppercase letter, one number
+let passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+if (!passwordRegex.test(password)) {
+    alert(
+        "Password must be at least 8 characters long and contain at least one capital letter and one number."
+    );
+    event.preventDefault();
+    return;
+}
 
     // Success message
     alert("Did you add login functionality?!");
@@ -70,17 +76,3 @@ toggle.addEventListener("click", function() {
     }
 
 });
-
-/* let toggle = document.getElementById("pwd-toggle");
-
-let passwordInput = document.querySelector(".pwd-password");
-
-toggle.addEventListener("change", function() {
-
-    if (toggle.checked) {
-        passwordInput.type = "text";
-    } else {
-        passwordInput.type = "password";
-    }
-
-}); */
